@@ -10,7 +10,7 @@ const PopUpHeader = ({ video_url, title, subtitle }: Info) => {
 		<DialogHeader>
 			<div className="flex justify-center items-center w-full bg-primary/60">
 				{video_url ? (
-					<iframe src={video_url} frameBorder="0"></iframe>
+					<iframe src={video_url} allowFullScreen ></iframe>
 				) : (
 					<Image src={Machine} alt="Caça niquel" width={200} height={200} />
 				)}

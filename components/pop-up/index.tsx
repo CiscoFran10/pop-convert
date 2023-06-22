@@ -14,7 +14,9 @@ const PopUp = ({ trigger, data }: PopUpProps) => {
 	return (
 		<Dialog>
 			<DialogTrigger asChild>
-				<Button variant={"secondary"}>{trigger}</Button>
+				<Button className="w-full" variant={"secondary"}>
+					{trigger}
+				</Button>
 			</DialogTrigger>
 			<DialogContent className="p-0">
 				<PopUpHeader {...data.info} />

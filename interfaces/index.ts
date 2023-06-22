@@ -1,3 +1,8 @@
+export interface Data {
+	game: PopUpData;
+	video: PopUpData;
+}
+
 export interface PopUpData {
 	info: Info;
 	inputs: FormInput[];
