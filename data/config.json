@@ -1,0 +1,51 @@
+{
+	"info": {
+		"video_url": "",
+		"title": "Caça Niquel",
+		"subtitle": "Teste sua sorte"
+	},
+	"inputs": [
+		{
+			"name": "name",
+			"label": "Nome",
+			"type": "text",
+			"placeholder": "Seu primeiro nome",
+			"defaultValue": "",
+			"rules": {
+				"required": "Campo obrigatório"
+			}
+		},
+		{
+			"name": "email",
+			"label": "E-mail",
+			"type": "email",
+			"placeholder": "@.com",
+			"defaultValue": "",
+			"rules": {
+				"required": "Campo obrigatório"
+			}
+		},
+
+		{
+			"name": "phone",
+			"label": "Celular",
+			"type": "text",
+			"placeholder": "Enter your last name",
+			"defaultValue": "",
+			"rules": {
+				"required": "Campo obrigatório"
+			}
+		},
+		{
+			"name": "gender",
+			"label": "Gênero",
+			"type": "radio",
+			"placeholder": "Enter your last name",
+			"options": ["Masculino", "Feminino"],
+			"defaultValue": "",
+			"rules": {
+				"required": "Campo obrigatório"
+			}
+		}
+	]
+}
