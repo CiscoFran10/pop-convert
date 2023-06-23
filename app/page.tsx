@@ -4,7 +4,7 @@ import Image from "next/image";
 import Coins from "./coins.webp";
 
 const getPopUpData = async () => {
-	const res = await fetch("http://localhost:3001/api", { cache: "no-store" });
+	const res = await fetch("http://localhost:3000/api", { cache: "no-store" });
 	return res.json();
 };
 

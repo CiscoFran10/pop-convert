@@ -3,6 +3,7 @@
 import { FormInput } from "@/interfaces";
 import React from "react";
 import { SubmitHandler, useForm } from "react-hook-form";
+import { toast } from "@/hooks/use-toast";
 
 import { Button } from "@/components/ui/button";
 import {
@@ -26,8 +27,15 @@ const PopUpForm = ({ inputs }: { inputs: FormInput[] }) => {
 		}, {}),
 	});
 
-	const onSubmit: SubmitHandler<any> = (values) => {
-		console.log(values);
+	const onSubmit: SubmitHandler<any> = (data) => {
+		toast({
+			title: "Voce enviou os seguintes valores:",
+			description: (
+				<pre className="mt-2 w-[340px] rounded-md bg-secondary p-4 border border-primary">
+					<code>{JSON.stringify(data, null, 2)}</code>
+				</pre>
+			),
+		});
 	};
 
 	return (
@@ -39,64 +47,71 @@ const PopUpForm = ({ inputs }: { inputs: FormInput[] }) => {
 						control={form.control}
 						name={name}
 						rules={rules}
-						render={({ field }) => (
-							<FormItem>
-								<FormLabel>{label}</FormLabel>
-								{(() => {
-									switch (type) {
-										case "radio":
-											return (
-												<FormControl>
-													<RadioGroup
-														className="flex flex-col"
-														onValueChange={field.onChange}
-														defaultValue={field.value}
-													>
-														{options?.map((opt) => (
-															<FormItem
-																className="flex items-center space-x-3 space-y-0"
-																key={opt}
-															>
-																<FormControl>
-																	<RadioGroupItem value={opt}>
-																		{opt}
-																	</RadioGroupItem>
-																</FormControl>
-																<FormLabel>{opt}</FormLabel>
-															</FormItem>
-														))}
-													</RadioGroup>
-												</FormControl>
-											);
+						render={({ field }) => {
+							switch (type) {
+								case "radio":
+									return (
+										<FormItem>
+											<FormLabel>{label}</FormLabel>
+											<FormControl>
+												<RadioGroup
+													className="flex flex-col !mt-3"
+													onValueChange={field.onChange}
+													defaultValue={field.value}
+												>
+													{options?.map((opt) => (
+														<FormItem
+															className="flex items-center space-x-3 space-y-0"
+															key={opt}
+														>
+															<FormControl>
+																<RadioGroupItem value={opt}>
+																	{opt}
+																</RadioGroupItem>
+															</FormControl>
+															<FormLabel>{opt}</FormLabel>
+														</FormItem>
+													))}
+												</RadioGroup>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									);
 
-										case "checkbox":
-											return (
-												<FormControl>
-													<Checkbox
-														checked={field.value as CheckedState}
-														onCheckedChange={field.onChange}
-													/>
-												</FormControl>
-											);
+								case "checkbox":
+									return (
+										<FormItem className="flex items-center gap-3 !mt-8">
+											<FormControl>
+												<Checkbox
+													checked={field.value as CheckedState}
+													onCheckedChange={field.onChange}
+												/>
+											</FormControl>
+											<FormLabel className="!mt-0">{label}</FormLabel>
+											<FormMessage />
+										</FormItem>
+									);
 
-										default:
-											return (
-												<FormControl>
-													<Input
-														type={type}
-														placeholder={placeholder}
-														{...field}
-														value={String(field.value)}
-													/>
-												</FormControl>
-											);
-									}
-								})()}
-								<FormMessage />
-							</FormItem>
-						)}
+								default:
+									return (
+										<FormItem>
+											<FormLabel>{label}</FormLabel>
+											<FormControl>
+												<Input
+													type={type}
+													placeholder={placeholder}
+													{...field}
+													value={String(field.value)}
+												/>
+											</FormControl>
+											<FormMessage />
+										</FormItem>
+									);
+							}
+						}}
 					/>
 				))}
+
 				<div className="flex justify-end">
 					<Button type="submit">Enviar</Button>
 				</div>
