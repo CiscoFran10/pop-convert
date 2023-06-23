@@ -2,14 +2,22 @@ import PopUp from "@/components/pop-up";
 import { Data } from "@/interfaces";
 import Image from "next/image";
 import Coins from "./coins.webp";
+import configData from "../data/config.json";
 
-const getPopUpData = async () => {
-	const res = await fetch("http://localhost:3000/api", { cache: "no-store" });
-	return res.json();
-};
+// EXEMPLO DE REQUEST PARA API
+
+// const getPopUpData = async () => {
+// 	const res = await fetch(`http://${process.env.API_URL}/api`, { cache: "no-store" });
+
+// 	if (!res.ok) {
+// 		throw new Error("Failed to fetch data");
+// 	}
+
+// 	return res.json();
+// };
 
 export default async function Home() {
-	const data: Data = await getPopUpData();
+	const data: Data = configData;
 
 	if (data)
 		return (

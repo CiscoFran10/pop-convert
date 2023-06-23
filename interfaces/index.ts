@@ -18,10 +18,10 @@ export interface FormInput {
 	name: string;
 	label: string;
 	type: string;
-	placeholder: string;
+	placeholder?: string;
 	options?: string[];
 	defaultValue: string | boolean;
-	rules: {
-		required: boolean;
+	rules?: {
+		required: boolean | string;
 	};
 }
