@@ -21,7 +21,7 @@ export default async function Home() {
 
 	if (data)
 		return (
-			<main className="flex min-h-screen flex-col justify-center items-center p-4 sm:p-10  md:p-24">
+			<main className="flex sm:min-h-screen flex-col justify-center items-center p-4 sm:p-10  md:p-24">
 				<div className="grid gap-10 bg-white shadow-md p-3 rounded-xl">
 					<Image
 						className="w-full h-[300px] rounded-xl object-cover"

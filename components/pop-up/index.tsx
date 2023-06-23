@@ -4,6 +4,7 @@ import PopUpHeader from "./pop-up-header";
 import { PopUpData } from "@/interfaces";
 import PopUpForm from "./pop-up-form";
 import { Button } from "../ui/button";
+import { ScrollArea } from "../ui/scroll-area";
 
 interface PopUpProps {
 	data: PopUpData;
